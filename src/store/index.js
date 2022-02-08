@@ -4,32 +4,41 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    // Variaveis
     state: {
-        api: "",
-        session: {
-            user: "",
-            token: "",
+        api: process.env.NODE_ENV == "development" ? "http://localhost:3000/" : "https://road2fit-api.vercel.app/",
+        session: JSON.parse(localStorage.getItem("userData")) || {
+            user: false,
+            token: ""
         },
         message: {
-            type: "",
-            data: "",
+            show: false,
+            text: ""
         },
+        loadingState: false
     },
     getters: {
-        showMessage(state) {
+        getShowMessage(state) {
             return state.message.data;
         },
-        loggedIn(state) {
-            return state.session.token;
+        getLoggedIn(state) {
+            return state.session;
         },
+        getLoadingState(state) {
+            return state.loadingState
+        }
     },
     mutations: {
         updateMessage(state, message) {
             state.message = message;
         },
         updateUser(state, user) {
-            state.session.user = user;
+            localStorage.setItem("userData", JSON.stringify(user))
+            state.session = user;
+            window.location.reload();
+        },
+        updateLoadingState(state, payload) {
+            state.loadingState = payload;
         },
     },
+
 });

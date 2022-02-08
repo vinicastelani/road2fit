@@ -2,15 +2,15 @@ import store from "@/store/index.js";
 
 const routes = [
     {
-        path: "/login",
-        name: "login",
-        component: () => import("../../Views/Login/Login.vue"),
+        path: "/home",
+        name: "home",
+        component: () => import("../../Views/Home/Home.vue"),
         beforeEnter: (to, from, next) => {
-            if (!store.state.session.user) {
+            if (store.state.session.user) {
                 next()
             } else {
                 next({
-                    path: "/home"
+                    path: "/login"
                 })
             }
         }
