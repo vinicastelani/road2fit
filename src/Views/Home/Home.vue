@@ -1,8 +1,6 @@
 <template>
   <div>
-    Home
-    {{ session }}
-    {{ session.user }}
+    <date-picker></date-picker>
   </div>
 </template>
 
@@ -10,6 +8,12 @@
 import { mapState } from "vuex";
 
 export default {
+  name: "home",
+  components: {
+    DatePicker: () => ({
+      component: import("./components/DatePicker.vue"),
+    }),
+  },
   computed: {
     ...mapState({
       session: (state) => state,
