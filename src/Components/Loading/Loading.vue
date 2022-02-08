@@ -1,5 +1,5 @@
 <template>
-  <div class="loading_component" v-if="loadingState">
+  <div class="loading_component" v-if="true">
     <img class="loading_spinner" src="../../assets/loading-spinner.gif" />
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
 }
 .loading_spinner {
   position: absolute;
-  left: calc(50% - 169px);
-  bottom: calc(50% - 129px);
+  left: calc(50% - 100px);
+  bottom: calc(50% - 50px);
 }
 </style>
