@@ -26,7 +26,7 @@
         class="my-4"
         v-model="date"
         no-title
-        locale="BR"
+        locale="pt-br"
         @input="menu1 = false"
         :max="maxDate"
       ></v-date-picker>
@@ -38,9 +38,7 @@
 export default {
   name: "datepicker",
   data: () => ({
-    date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-      .toISOString()
-      .substr(0, 10),
+    date: new Date().toISOString().substr(0, 10),
     menu1: false,
   }),
   computed: {
@@ -50,16 +48,14 @@ export default {
     },
     day: function () {
       let [ano, mes, dia] = this.date.split("-");
-      let day = new Date(ano, mes, dia).toLocaleString("BR-pt", {
+      let day = new Date(ano, mes, dia).toLocaleString("pt-BR", {
         weekday: "long",
       });
 
       return day.charAt(0).toUpperCase() + day.slice(1);
     },
     maxDate: function () {
-      return new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-        .toISOString()
-        .substr(0, 10);
+      return new Date().toISOString().substr(0, 10);
     },
   },
 };
