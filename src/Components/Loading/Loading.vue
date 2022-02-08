@@ -1,5 +1,5 @@
 <template>
-  <div class="loading_component" v-if="true">
+  <div class="loading_component" v-if="loadingState">
     <img class="loading_spinner" src="../../assets/loading-spinner.gif" />
   </div>
 </template>
