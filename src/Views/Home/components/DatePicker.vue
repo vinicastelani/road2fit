@@ -26,7 +26,9 @@
         class="my-4"
         v-model="date"
         no-title
+        locale="BR"
         @input="menu1 = false"
+        :max="maxDate"
       ></v-date-picker>
     </v-menu>
   </v-row>
@@ -53,6 +55,11 @@ export default {
       });
 
       return day.charAt(0).toUpperCase() + day.slice(1);
+    },
+    maxDate: function () {
+      return new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+        .toISOString()
+        .substr(0, 10);
     },
   },
 };
