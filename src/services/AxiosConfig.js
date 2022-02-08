@@ -1,7 +1,6 @@
-import axios from "axios";
-
+import axios from "axios"
 import store from "../store/index"
-// import store from "../../store/index";
+
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
     store.commit("updateLoadingState", true)

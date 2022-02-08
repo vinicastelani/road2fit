@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        api: process.env.NODE_ENV == "development" ? "http://localhost:3000/" : "https://road2fit-api.vercel.app/",
+        api: process.env.NODE_ENV == "development" ? "https://road2fit-api.vercel.app/" : "https://road2fit-api.vercel.app/",
         session: JSON.parse(localStorage.getItem("userData")) || {
             user: false,
             token: ""
